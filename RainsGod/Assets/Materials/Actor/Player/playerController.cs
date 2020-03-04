@@ -5,7 +5,6 @@ using UnityEngine;
 public class playerController : MonoBehaviour
 {
 
-    GameObject arc_obj = GameObject.Find("ArcGenerator");
     public GameObject[] arc_base = new GameObject[4];
 
     // Start is called before the first frame update
@@ -56,8 +55,6 @@ public class playerController : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision_)
     {
         GameObject mocha = GameObject.Find("mocha");
-        GameObject grass = GameObject.Find("green_arcPrefab(Clone)");
-        GameObject solid = GameObject.Find("red_arcPrefab(Clone)");
 
         if (collision_.tag == "mocha")
         {
