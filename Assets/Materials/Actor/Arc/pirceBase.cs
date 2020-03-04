@@ -7,7 +7,7 @@ using UnityEngine;
 public class pirceBase : MonoBehaviour
 {
     
-    public Attribute land_attribute = Attribute.GRASS;
+    public Attribute land_attribute = Attribute.ETC;
     public Building land_building = Building.NONE;
     public Status land_status = Status.NONE;
     public int land_water = 100;
@@ -20,7 +20,8 @@ public class pirceBase : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        int random = Random.Range(0,(int)Attribute.ETC);
+        land_attribute = (Attribute)random;
     }
 
     // Update is called once per frame

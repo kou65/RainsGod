@@ -14,4 +14,20 @@ public class PrefabGenerator : MonoBehaviour
         prefab.transform.position = new Vector3(position_.x, position_.y, position_.z);
         prefab.name = new_object_name_;
     }
+
+    public void CreatePrefab(string prefab_name_, Vector3 position_, float degree_, string new_object_name_)
+    {
+        GameObject planet = GameObject.Find("en");
+        Vector3 axis = new Vector3(0, 0, 1);
+
+        GameObject blueprint = (GameObject)Resources.Load(prefab_name_);
+        GameObject prefab = Instantiate(blueprint);
+
+        prefab.transform.position = new Vector3(position_.x, position_.y, position_.z);
+        prefab.name = new_object_name_;
+        prefab.transform.RotateAround(planet.transform.position, axis,  degree_);
+
+    }
+
+
 }

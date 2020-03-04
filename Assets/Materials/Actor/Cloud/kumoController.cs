@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class kumoController : MonoBehaviour
 {
-    public GameObject planet;
+    GameObject planet;
 
     // Start is called before the first frame update
     void Start()
     {
         this.planet = GameObject.Find("en");
+
     }
 
     // Update is called once per frame

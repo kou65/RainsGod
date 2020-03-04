@@ -20,10 +20,6 @@ public class arcGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        int randam_generate = 0;
-        randam_generate = Random.Range(0,(int)Attribute.ETC);
-
         this.arc_base[0] = GameObject.Find("base_arc1");
         this.arc_base[1] = GameObject.Find("base_arc2");
         this.arc_base[2] = GameObject.Find("base_arc3");
@@ -34,6 +30,18 @@ public class arcGenerator : MonoBehaviour
             if (arc_base[i].GetComponent<pirceBase>().land_attribute == Attribute.GRASS)
             {
                 arc_slot[i] = Instantiate(grassPrefab) as GameObject;
+            }
+            else if (arc_base[i].GetComponent<pirceBase>().land_attribute == Attribute.SOLID)
+            {
+                arc_slot[i] = Instantiate(solidPrefab) as GameObject;
+            }
+            else if (arc_base[i].GetComponent<pirceBase>().land_attribute == Attribute.GRASS_SOLID)
+            {
+                arc_slot[i] = Instantiate(grass_solidPrefab) as GameObject;
+            }
+            else if (arc_base[i].GetComponent<pirceBase>().land_attribute == Attribute.SOLID_GRASS)
+            {
+                arc_slot[i] = Instantiate(solid_grassPrefab) as GameObject;
             }
         }
 

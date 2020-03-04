@@ -6,9 +6,7 @@ public enum Attribute
     GRASS,
     SOLID,
     GRASS_SOLID,
-    // α以降
-    DESERT,
-    SEA,
+    SOLID_GRASS,
     ETC
 }
 
