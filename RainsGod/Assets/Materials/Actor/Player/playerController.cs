@@ -5,6 +5,10 @@ using UnityEngine;
 public class playerController : MonoBehaviour
 {
 
+<<<<<<< HEAD
+=======
+    //GameObject arc_obj = GameObject.Find("ArcGenerator");
+>>>>>>> kasugai(child)
     public GameObject[] arc_base = new GameObject[4];
 
     // Start is called before the first frame update
