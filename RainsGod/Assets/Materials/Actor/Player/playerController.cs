@@ -5,7 +5,7 @@ using UnityEngine;
 public class playerController : MonoBehaviour
 {
 
-    GameObject arc_obj = GameObject.Find("ArcGenerator");
+    //GameObject arc_obj = GameObject.Find("ArcGenerator");
     public GameObject[] arc_base = new GameObject[4];
 
     // Start is called before the first frame update
