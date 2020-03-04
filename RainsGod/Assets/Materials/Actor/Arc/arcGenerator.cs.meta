@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 0a61cbc556e6dab4189ce7796676165d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - grass_solidPrefab: {fileID: 8188020155832022036, guid: 1ec7a3f27c09b754e9273b9bdae0b97d,
+      type: 3}
+  - solid_grassPrefab: {fileID: 5249282604080082102, guid: 3df553d5cf23c86419608b484a06e448,
+      type: 3}
+  - grassPrefab: {fileID: 1514103992336324956, guid: 6d70937f384be5c4f818524f8554ccac,
+      type: 3}
+  - solidPrefab: {fileID: 8919824518039570690, guid: 9947c50967cb7d3438484dee2c8843df,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
