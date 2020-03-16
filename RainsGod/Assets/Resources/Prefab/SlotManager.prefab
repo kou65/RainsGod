@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5786824858589165562
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2254666202708702071}
+  - component: {fileID: 1448541723212697819}
+  m_Layer: 0
+  m_Name: SlotManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2254666202708702071
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5786824858589165562}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.23790477, y: -0.15063703, z: -0.29175365}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1448541723212697819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5786824858589165562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c13db3fe3e4a0824ba95d09b52ccc2bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_plant_obj: {fileID: 7727350416106447937, guid: 8dfd67de5186dfb4b90da4c215a599cc,
+    type: 3}
+  m_arch_obj: {fileID: 1883242832310394064, guid: 07b169fd6691a6a4eaade050d834a73a,
+    type: 3}
+  m_food_obj: {fileID: 9219914205172374053, guid: 9f67b3309af1bcb43bfb5e706badce20,
+    type: 3}
+  m_arch_rand_max: 10
+  m_arch_rand_min: 0
+  m_plant_rand_max: 10
+  m_plant_rand_min: 0
+  m_food_rand_max: 10
+  m_food_rand_min: 0

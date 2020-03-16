@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 30525d218feee1a41ab1b6a707a9398e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - player_obj: {instanceID: 0}
+  - player: {instanceID: 0}
+  - on_aura: {fileID: 21300000, guid: 9db5d84991e486c4a9e09f0579c805e6, type: 3}
+  - no_aura: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ac634749c753a9941802f5a9a5c07b70
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - grass_construction: {fileID: 21300000, guid: be0e73e38b2c95f4699d7bdf76fc2e41,
+      type: 3}
+  - solid_construction: {fileID: 21300000, guid: 9bb4bdca6ea54744f861be0ad5a30629,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

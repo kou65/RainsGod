@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: b3e4636a215bb8c459e0e90c7ecc3933
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - player_obj: {instanceID: 0}
+  - player: {instanceID: 0}
+  - under_construction: {fileID: 21300000, guid: 96adf362ea46bb64185b01920e8ade5e,
+      type: 3}
+  - comprite_construction: {fileID: 21300000, guid: d5cdec2671374884c923e5711a1b0941,
+      type: 3}
+  - ruin_construction: {fileID: 21300000, guid: 0d7f92828584c5e408bb19ae8650ee30,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

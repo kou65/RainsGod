@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 4a19d614d96b57946826d7cd7df42c28
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - op_construction: {fileID: 21300000, guid: bcd44cc31514e2c43a457643c734ee0b, type: 3}
+  - game_construction: {fileID: 21300000, guid: 403ea762253a9224a97ba25cb4483664,
+      type: 3}
+  - camera_controller: {instanceID: 0}
+  - planet: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
