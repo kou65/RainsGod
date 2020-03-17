@@ -32,23 +32,29 @@ public class MochaControl : MonoBehaviour
     GameObject mocha_manager_object;
     MochasManager mocha_manager;
 
+    GameObject prefab_generator_object;
+    PrefabGenerator prefab_generator;
+
     // Start is called before the first frame update
     void Start()
     {
-        this.mocha_parameter.m_State = MochaState.BREAK;
+        //this.mocha_parameter.m_State = MochaState.BREAK;
         this.MochaOldState = this.mocha_parameter.m_State;
 
-        mocha_manager_object = GameObject.Find("MochaManager");
+        mocha_manager_object = GameObject.Find("MochasManager");
         mocha_manager = mocha_manager_object.GetComponent<MochasManager>();
 
+        prefab_generator_object = GameObject.Find("PrefabGenerator");
+        prefab_generator = prefab_generator_object.GetComponent<PrefabGenerator>();
+
         // 自分自身の情報で初期化
-        my_object = GameObject.Find(this.transform.name);
+        this.my_object = GameObject.Find(this.transform.name);
 
         // このモチャに個別の名前を付ける
-        my_object.transform.name = mocha_manager.GenerateNamingMocha();
+        this.my_object.transform.name = mocha_manager.GenerateNamingMocha();
 
         // このモチャをMochasManagerのMochaListの一番最後に追加する
-        mocha_manager.AddMochaList(my_object);
+        mocha_manager.AddMochaList(this.my_object);
     }
 
     // Update is called once per frame
@@ -127,11 +133,12 @@ public class MochaControl : MonoBehaviour
     {
         if(OneSecond())
         {
-            BreakCounter--;
+            BreakCounter++;
             if(BreakCounter >= 30)
             {
                 BreakCounter = 0;
-                this.mocha_parameter.m_State = mocha_manager.MochaNextState(my_object);
+                this.mocha_parameter.m_State = mocha_manager.MochaNextState(this.my_object);
+
             }
         }
     }
@@ -141,7 +148,15 @@ public class MochaControl : MonoBehaviour
     {
         if (OneSecond())
         {
+            BreakCounter++;
+            if (BreakCounter >= 10)
+            {
+                BreakCounter = 0;
+                this.mocha_parameter.m_State = MochaState.EMIGRATE;
 
+
+                prefab_generator.CreatePrefab("Prefab/MochaPrefab", this.transform.position, this.transform.eulerAngles);
+            }
         }
     }
 
@@ -162,7 +177,7 @@ public class MochaControl : MonoBehaviour
                 }
                 else
                 {
-                    this.mocha_parameter.m_State = mocha_manager.MochaNextState(my_object);
+                    this.mocha_parameter.m_State = mocha_manager.MochaNextState(this.my_object);
                 }
             }
         }
@@ -181,10 +196,21 @@ public class MochaControl : MonoBehaviour
         }
     }
 
+    float A = 0.0f;
+
     // 移動の挙動
     private void Emigrate()
     {
+        UtillityMethod.PlanetRotate(this.gameObject, 0.1f);
 
+        A += Time.deltaTime;
+
+        if(A >= 10.0f)
+        {
+            this.mocha_parameter.m_State = MochaState.BREED;
+            A = 0.0f;
+        }
+        
     }
 
     // 食事の挙動
@@ -204,7 +230,7 @@ public class MochaControl : MonoBehaviour
                 }
                 else
                 {
-                    this.mocha_parameter.m_State = mocha_manager.MochaNextState(my_object);
+                    this.mocha_parameter.m_State = mocha_manager.MochaNextState(this.my_object);
                 }
             }
         }

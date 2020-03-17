@@ -17,7 +17,7 @@ public class MochasManager : MonoBehaviour
 
     void Start()
     {
-        mocha_data_object = GameObject.Find("MochaData");
+        mocha_data_object = GameObject.Find("MochasData");
         mocha_data = mocha_data_object.GetComponent<MochasData>();
 
         // ステート割合の目安
