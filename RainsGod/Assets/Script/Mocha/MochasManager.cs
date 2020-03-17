@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class MochasManager : MonoBehaviour
 {
     private List<GameObject> MochaList = new List<GameObject>();
@@ -17,7 +19,7 @@ public class MochasManager : MonoBehaviour
 
     void Start()
     {
-        mocha_data_object = GameObject.Find("MochaData");
+        mocha_data_object = GameObject.Find("MochasData");
         mocha_data = mocha_data_object.GetComponent<MochasData>();
 
         // ステート割合の目安

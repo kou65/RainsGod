@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class Genereter : MonoBehaviour
 {
 
+    // フルーツ
     GameObject m_fruit;
 
 

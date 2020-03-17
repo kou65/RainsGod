@@ -309,7 +309,7 @@ public class SlotManager : MonoBehaviour
         GameObject get_obj;
 
         // 最大スロット数分
-        for (int i = 0; i < MAX_OBJECT_SLOT_NUM; i++)
+        for (int i = 0;i < MAX_OBJECT_SLOT_NUM;i++)
         {
 
             //Vector3 pos = new Vector3(32 * i, 0, 0);
@@ -318,13 +318,14 @@ public class SlotManager : MonoBehaviour
 
             //transform.RotateAround(pos, axis, angle);
 
+            // ローテーション
+            UtillityMethod.PlanetRotate(this.gameObject,15);
+
             // 入っていないならもう一度
             if (m_planet_slot_list[i].p_obj == null)
             {
                 continue;
             }
-
-            UtillityMethod.PlanetRotate(this.gameObject, 15 * i);
 
             // 生成
             get_obj = Instantiate(m_planet_slot_list[i].p_obj,
