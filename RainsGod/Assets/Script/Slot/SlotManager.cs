@@ -312,17 +312,19 @@ public class SlotManager : MonoBehaviour
         for (int i = 0; i < MAX_OBJECT_SLOT_NUM; i++)
         {
 
-            Vector3 pos = new Vector3(32 * i, 0, 0);
-            Vector3 axis = new Vector3(32 * i, 0, 0);
-            float angle = Time.deltaTime;
+            //Vector3 pos = new Vector3(32 * i, 0, 0);
+            //Vector3 axis = new Vector3(32 * i, 0, 0);
+            //float angle = Time.deltaTime;
 
-            transform.RotateAround(pos, axis, angle);
+            //transform.RotateAround(pos, axis, angle);
 
             // 入っていないならもう一度
             if (m_planet_slot_list[i].p_obj == null)
             {
                 continue;
             }
+
+            UtillityMethod.PlanetRotate(this.gameObject, 15 * i);
 
             // 生成
             get_obj = Instantiate(m_planet_slot_list[i].p_obj,

@@ -44,7 +44,7 @@ public class cameraController : MonoBehaviour
         {
             UtillityMethod.PlanetRotate(this.gameObject, gameData.speed);
 
-            if (UtillityMethod.GetMessage(Message.RESPOWN))
+            if (UtillityMethod.GetMessage(Message.SUISIDE))
             {
                 transform.position = new Vector3(0, 10, -10);
                 transform.rotation = new Quaternion(0, 0, 0, 0);
