@@ -10,6 +10,7 @@ public enum Attribute
     ETC
 }
 
+#region 建築物の列挙子
 public enum Building
 {
     HOUSE,
@@ -22,6 +23,32 @@ public enum BuildingStatus
     COMPLETE,
     NONE
 }
+public enum BuildingLevel
+{
+    LV_1,
+    LV_2,
+    LV_3,
+    NONE
+}
+public enum BuildingType
+{
+    TYPE_A,
+    TYPE_B,
+    TYPE_C,
+    TYPE_D,
+    NONE
+}
+#endregion
+
+public enum ObjectType
+{
+    TYPE_A,
+    TYPE_B,
+    TYPE_C,
+    TYPE_D,
+    NONE
+}
+
 
 public enum Status
 {
@@ -40,10 +67,14 @@ public enum Scene
 }
 
 
+
 public class gameData : MonoBehaviour
 {
     public const float MAP_SPEED = 1.0f;
     public const float DECLERATION = 0.99f;
+
+    // プレイヤー画像変更の最小速度
+    public const float MINIMUM_SPEED = 0.1f;
 
     // 建築物の最大数
     public const int MAX_BUILDING = 30;
@@ -59,6 +90,9 @@ public class gameData : MonoBehaviour
 
     // 初期化イベントの時間
     public const float INIT_EVENT_TIME = 2.0f;
+
+    // 建築物の回復速度
+    public const int BUILDING_REPAIR = 10;
 
     public static float speed = 0.0f;
 

@@ -1,0 +1,62 @@
+fileFormatVersion: 2
+guid: fa4531a6fcc09dd43a6fa8892b5d9f9c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - under_construction: {instanceID: 0}
+  - comprite_construction: {instanceID: 0}
+  - ruin_construction: {instanceID: 0}
+  - lv1_build_type_a: {fileID: -7707257977478730834, guid: ce1bbc5c7d0140b45932c857707d9f37,
+      type: 3}
+  - lv2_build_type_a: {fileID: -320008173966656340, guid: ce1bbc5c7d0140b45932c857707d9f37,
+      type: 3}
+  - lv3_build_type_a: {fileID: -8382649619198393694, guid: ce1bbc5c7d0140b45932c857707d9f37,
+      type: 3}
+  - lv1_build_type_b: {fileID: -7707257977478730834, guid: ce1bbc5c7d0140b45932c857707d9f37,
+      type: 3}
+  - lv2_build_type_b: {fileID: -320008173966656340, guid: ce1bbc5c7d0140b45932c857707d9f37,
+      type: 3}
+  - lv3_build_type_b: {fileID: -8382649619198393694, guid: ce1bbc5c7d0140b45932c857707d9f37,
+      type: 3}
+  - lv1_build_type_c: {fileID: 6584449122209055971, guid: ce1bbc5c7d0140b45932c857707d9f37,
+      type: 3}
+  - lv2_build_type_c: {fileID: -3983326158583410981, guid: ce1bbc5c7d0140b45932c857707d9f37,
+      type: 3}
+  - lv3_build_type_c: {fileID: 4453916614584302835, guid: ce1bbc5c7d0140b45932c857707d9f37,
+      type: 3}
+  - lv1_build_type_d: {fileID: -2278175414643131008, guid: ce1bbc5c7d0140b45932c857707d9f37,
+      type: 3}
+  - lv2_build_type_d: {fileID: -8364002082639847751, guid: ce1bbc5c7d0140b45932c857707d9f37,
+      type: 3}
+  - lv3_build_type_d: {fileID: -5929756616598432348, guid: ce1bbc5c7d0140b45932c857707d9f37,
+      type: 3}
+  - lv1_complete_type_a: {fileID: -1370150288747598966, guid: ce1bbc5c7d0140b45932c857707d9f37,
+      type: 3}
+  - lv2_complete_type_a: {fileID: 961210159572563268, guid: ce1bbc5c7d0140b45932c857707d9f37,
+      type: 3}
+  - lv3_complete_type_a: {fileID: 8527704022205132460, guid: ce1bbc5c7d0140b45932c857707d9f37,
+      type: 3}
+  - lv1_complete_type_b: {fileID: -1706636390946437097, guid: ce1bbc5c7d0140b45932c857707d9f37,
+      type: 3}
+  - lv2_complete_type_b: {fileID: -4549087368393172227, guid: ce1bbc5c7d0140b45932c857707d9f37,
+      type: 3}
+  - lv3_complete_type_b: {fileID: 6163353665255179149, guid: ce1bbc5c7d0140b45932c857707d9f37,
+      type: 3}
+  - lv1_complete_type_c: {fileID: 197298030915183396, guid: ce1bbc5c7d0140b45932c857707d9f37,
+      type: 3}
+  - lv2_complete_type_c: {fileID: 5661934994238220498, guid: ce1bbc5c7d0140b45932c857707d9f37,
+      type: 3}
+  - lv3_complete_type_c: {fileID: 5862834054929862926, guid: ce1bbc5c7d0140b45932c857707d9f37,
+      type: 3}
+  - lv1_complete_type_d: {fileID: -3851808702378514648, guid: ce1bbc5c7d0140b45932c857707d9f37,
+      type: 3}
+  - lv2_complete_type_d: {fileID: -195241267747904483, guid: ce1bbc5c7d0140b45932c857707d9f37,
+      type: 3}
+  - lv3_complete_type_d: {fileID: 8284025262696111188, guid: ce1bbc5c7d0140b45932c857707d9f37,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

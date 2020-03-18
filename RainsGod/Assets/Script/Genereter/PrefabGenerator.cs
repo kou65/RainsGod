@@ -74,7 +74,7 @@ public class PrefabGenerator : MonoBehaviour
             prefab.tag = new_object_name_;
         }
 
-        public static void CreateCloud(GameObject obj_, string prefab_name_, Vector3 position_, float degree_, string new_object_name_)
+        public static void CreateChild(GameObject obj_, string prefab_name_, Vector3 position_, float degree_, string new_object_name_)
         {
             Vector3 axis = new Vector3(0, 0, 1);
 

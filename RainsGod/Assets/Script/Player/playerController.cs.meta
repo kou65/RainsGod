@@ -4,11 +4,15 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - op_construction: {fileID: 21300000, guid: bcd44cc31514e2c43a457643c734ee0b, type: 3}
-  - game_construction: {fileID: 21300000, guid: 403ea762253a9224a97ba25cb4483664,
+  - strong_right_player: {fileID: 21300000, guid: 4ebaae4a04a8bd042aa5e860ea182e1d,
       type: 3}
-  - camera_controller: {instanceID: 0}
-  - planet: {instanceID: 0}
+  - strong_left_player: {fileID: 21300000, guid: aca5664a950e8bc4b96ffe7052e90b5e,
+      type: 3}
+  - strong_center_player: {fileID: 21300000, guid: 403ea762253a9224a97ba25cb4483664,
+      type: 3}
+  - right_player: {fileID: 21300000, guid: 1f9bedd0cf09cc74cb30d30c280f300b, type: 3}
+  - left_player: {fileID: 21300000, guid: 58977e03b367fc64abd012fda80401d5, type: 3}
+  - center_player: {fileID: 21300000, guid: 403ea762253a9224a97ba25cb4483664, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
