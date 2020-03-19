@@ -6,11 +6,6 @@ public class BuildingBase: MonoBehaviour
 {
     protected SpriteRenderer sprite_render;
 
-    // 旧画像
-    public Sprite under_construction;
-    public Sprite comprite_construction;
-    public Sprite ruin_construction;
-
 #region 本画像
 
     public Sprite lv1_build_type_a;
@@ -96,11 +91,9 @@ public class BuildingBase: MonoBehaviour
                     this.hp += gameData.BUILDING_REPAIR;
                 }
 
-                sprite_render.sprite = under_construction;
 
                 break;
             case BuildingStatus.COMPLETE:
-                sprite_render.sprite = comprite_construction;
                 if (delta > span)
                 {
                     delta = 0;
@@ -120,7 +113,6 @@ public class BuildingBase: MonoBehaviour
 
                 break;
             case BuildingStatus.NONE:
-                sprite_render.sprite = ruin_construction;
                 break;
         }
 

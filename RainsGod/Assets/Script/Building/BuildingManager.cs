@@ -17,12 +17,7 @@ public class BuildingManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        planet = GameObject.Find("en");
         mocha_obj = GameObject.Find("mocha");
-
-        prefab_ganerator_obj = GameObject.Find("PrefabGenerator");
-        prefab_ganerator = prefab_ganerator_obj.GetComponent<PrefabGenerator>();
-
 
     }
 
@@ -42,10 +37,10 @@ public class BuildingManager : MonoBehaviour
             switch (curr_attrivute)
             {
                 case Attribute.GRASS:
-                    prefab_ganerator.CreatePrefab("Prefab/Building/GrassBuildingPrefab", this.gameObject, building_name);
+                    PrefabGenerator.CreatePrefab("Prefab/Building/GrassBuildingPrefab", this.gameObject, building_name);
                     break;
                 case Attribute.SOLID:
-                    prefab_ganerator.CreatePrefab("Prefab/Building/SolidBuildingPrefab", this.gameObject, building_name);
+                    PrefabGenerator.CreatePrefab("Prefab/Building/SolidBuildingPrefab", this.gameObject, building_name);
                     break;
             }
         }
