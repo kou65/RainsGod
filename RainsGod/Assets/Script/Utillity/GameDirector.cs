@@ -24,8 +24,6 @@ public class GameDirector : MonoBehaviour
 
     public static bool destroy_event = false;
     public static bool spown_event = false;
-
-    static float count = 0;
     // Start is called before the first frame update
     void Start()
     {

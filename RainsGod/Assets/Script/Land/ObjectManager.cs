@@ -12,7 +12,7 @@ public class ObjectManager : MonoBehaviour
 
         for (int i = 0; i < gameData.MAX_OBJECT; i++)
         {
-            PrefabGenerator.CreatePrefabTest("Prefab/land/objPrefab", this.gameObject, "iwa");
+            PrefabGenerator.CreateChild(this.gameObject,"Prefab/land/objPrefab", this.transform.position, this.transform.rotation.z,"LandObject");
         }
 
     }

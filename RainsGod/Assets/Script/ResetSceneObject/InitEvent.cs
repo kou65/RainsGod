@@ -5,7 +5,6 @@ using UnityEngine;
 public static class InitEvent
 {
     static bool during_event = false;
-    static bool complete_destroy = false;
 
     static float count = 0.0f;
 

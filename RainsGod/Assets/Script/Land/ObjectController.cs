@@ -6,13 +6,22 @@ public class ObjectController : MonoBehaviour
 {
     SpriteRenderer sprite_render;
 
-    public Sprite grass_construction;
-    public Sprite solid_construction;
+    public Sprite grass_object_a;
+    public Sprite grass_object_b;
+    public Sprite grass_object_c;
+    public Sprite grass_object_d;
+
+    public Sprite solid_object_a;
+    public Sprite solid_object_b;
+    public Sprite solid_object_c;
+    public Sprite solid_object_d;
 
     GameObject parent;
     GameObject three_parent;
 
     pirceBase pirce_pearent;
+
+    ObjectType obj_type;
 
     // Start is called before the first frame update
     void Start()
@@ -26,18 +35,53 @@ public class ObjectController : MonoBehaviour
 
         this.transform.localPosition = new Vector3(Random.Range(-3, 3), Random.Range(-3, 1), 0);
 
+        obj_type = (ObjectType)Random.Range(0, (int)ObjectType.NONE);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(pirce_pearent.land_attribute == Attribute.GRASS)
+
+
+        switch (pirce_pearent.land_attribute)
         {
-            sprite_render.sprite = grass_construction;
+            case Attribute.GRASS:
+                switch (obj_type)
+                {
+                    case ObjectType.TYPE_A:
+                        sprite_render.sprite = grass_object_a;
+                        break;
+                    case ObjectType.TYPE_B:
+                        sprite_render.sprite = grass_object_b;
+                        break;
+                    case ObjectType.TYPE_C:
+                        sprite_render.sprite = grass_object_c;
+                        break;
+                    case ObjectType.TYPE_D:
+                        sprite_render.sprite = grass_object_d;
+                        break;
+                }
+                break;
+            case Attribute.SOLID:
+                switch (obj_type)
+                {
+                    case ObjectType.TYPE_A:
+                        sprite_render.sprite = solid_object_a;
+                        break;
+                    case ObjectType.TYPE_B:
+                        sprite_render.sprite = solid_object_b;
+                        break;
+                    case ObjectType.TYPE_C:
+                        sprite_render.sprite = solid_object_c;
+                        break;
+                    case ObjectType.TYPE_D:
+                        sprite_render.sprite = solid_object_d;
+                        break;
+                }
+                break;
         }
-        else if (pirce_pearent.land_attribute == Attribute.SOLID)
-        {
-            sprite_render.sprite = solid_construction;
-        }
+
+
     }
 }
