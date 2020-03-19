@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
+
 public class TagMaker : MonoBehaviour
 {
     public static void AddTag(string tagname)
@@ -29,3 +31,4 @@ public class TagMaker : MonoBehaviour
     }
 
 }
+#endif

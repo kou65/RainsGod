@@ -289,19 +289,19 @@ MonoBehaviour:
   - Priority: 99
     Ratio: 1
     RequiredNumber: 1
-  - Priority: 4
+  - Priority: 1
     Ratio: 2
     RequiredNumber: 1
-  - Priority: 1
+  - Priority: 2
     Ratio: 3
     RequiredNumber: 1
-  - Priority: 3
+  - Priority: 4
     Ratio: 2
     RequiredNumber: 2
   - Priority: 98
     Ratio: 1
     RequiredNumber: 1
-  - Priority: 2
+  - Priority: 3
     Ratio: 1
     RequiredNumber: 1
 --- !u!1001 &587294038
@@ -316,6 +316,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mocha0
       objectReference: {fileID: 0}
+    - target: {fileID: 1441289781383040693, guid: 7d1139d0ee234184fb59dafd5bc0e598,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ea93c8481fd2fac41ac39ed68f2214c5,
+        type: 3}
     - target: {fileID: 1441289781383040694, guid: 7d1139d0ee234184fb59dafd5bc0e598,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -371,6 +377,47 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1441289781383040695, guid: 7d1139d0ee234184fb59dafd5bc0e598,
+        type: 3}
+      propertyPath: mocha_parameter.m_State
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441289781383040695, guid: 7d1139d0ee234184fb59dafd5bc0e598,
+        type: 3}
+      propertyPath: MochaStateSprite.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: ea93c8481fd2fac41ac39ed68f2214c5,
+        type: 3}
+    - target: {fileID: 1441289781383040695, guid: 7d1139d0ee234184fb59dafd5bc0e598,
+        type: 3}
+      propertyPath: MochaStateSprite.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 18b55d6a65cac9e4790327ea5590b463,
+        type: 3}
+    - target: {fileID: 1441289781383040695, guid: 7d1139d0ee234184fb59dafd5bc0e598,
+        type: 3}
+      propertyPath: MochaStateSprite.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: c66441002712bf04d806eb0a018e8f9b,
+        type: 3}
+    - target: {fileID: 1441289781383040695, guid: 7d1139d0ee234184fb59dafd5bc0e598,
+        type: 3}
+      propertyPath: MochaStateSprite.Array.data[4]
+      value: 
+      objectReference: {fileID: 21300000, guid: 70612d2a8e317dd49898c7ed54db79f2,
+        type: 3}
+    - target: {fileID: 1441289781383040695, guid: 7d1139d0ee234184fb59dafd5bc0e598,
+        type: 3}
+      propertyPath: MochaStateSprite.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: bc6572e6e9a9fdc418ae98e36753f8ea,
+        type: 3}
+    - target: {fileID: 1441289781383040695, guid: 7d1139d0ee234184fb59dafd5bc0e598,
+        type: 3}
+      propertyPath: MochaStateSprite.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: adbb7db2e44dd1146936a21888b46ac6,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d1139d0ee234184fb59dafd5bc0e598, type: 3}
 --- !u!1 &676280993

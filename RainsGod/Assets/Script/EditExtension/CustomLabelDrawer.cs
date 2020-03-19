@@ -1,6 +1,7 @@
-﻿using UnityEditor;
+﻿
+#if UNITY_EDITOR
+using UnityEditor;
 using UnityEngine;
-
 [CustomPropertyDrawer(typeof(CustomLabelAttribute))]
 public class CustomLabelDrawer : PropertyDrawer
 {
@@ -15,3 +16,4 @@ public class CustomLabelDrawer : PropertyDrawer
         return EditorGUI.GetPropertyHeight(property, true);
     }
 }
+#endif

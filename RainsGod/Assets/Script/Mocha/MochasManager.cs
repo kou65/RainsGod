@@ -40,7 +40,7 @@ public class MochasManager : MonoBehaviour
     // 名前の後に数字を付けることによって同じ名前のモチャが生まれないようにしている。
     public string GenerateNamingMocha()
     {
-        string MochaName = "Mocha" + AllMochaCounter++;
+        string MochaName = "Mocha" + ++AllMochaCounter;
 
         return MochaName;
     }
@@ -114,17 +114,24 @@ public class MochasManager : MonoBehaviour
         {
             SortingStateList(MochaState.BREAK);
 
-            /*if ( もし今いる土地の潤い度が一定値以上なら &&
-                    モチャの総人口が人口上限未満なら)
+            int BreedMochaNum = 0;
+            for(int i = 0; i < MochaList.Count; i++)
+            {
+                if(mocha[i].mocha_parameter.m_State == MochaState.BREED)
+                {
+                    BreedMochaNum++;
+                }
+            }
+            if ( //もし今いる土地の潤い度が一定値以上なら &&
+                MochaList.Count + BreedMochaNum < mocha_data.PopulationLimit)
             {
                 SortingStateList(MochaState.BREED);
-            }*/
+            }
 
-            /*if(もしスタミナが一定値以上なら)
+            if (mocha[MyMochaNumber].mocha_parameter.m_Stamina >= 60)
             {
                 SortingStateList(MochaState.CONSTRUCT);
             }
-            */
 
             /* if(暇しているモチャを探して、そのモチャのステートもして)
             {
@@ -134,11 +141,10 @@ public class MochasManager : MonoBehaviour
 
             SortingStateList(MochaState.EMIGRATE);
 
-            /*if (もしスタミナが一定値以下なら)
+            if (mocha[MyMochaNumber].mocha_parameter.m_Stamina < 60)
             {
                 SortingStateList(MochaState.MEAL);
             }
-            */
         }
 
         void SortMyList(List<MochaState> mocha_state_)
@@ -150,7 +156,7 @@ public class MochasManager : MonoBehaviour
 
                 for (int j = i + 1; j < mocha_state_.Count; j++)
                 {
-                    if (mocha_data.mocha_state_info[(int)mocha_state_[j]].Priority <
+                    if (mocha_data.mocha_state_info[(int)mocha_state_[j]].Priority >
                         mocha_data.mocha_state_info[(int)MinPriority].Priority)
                     {
                         MinPriority = mocha_state_[j];

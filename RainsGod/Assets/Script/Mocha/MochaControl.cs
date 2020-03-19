@@ -17,15 +17,32 @@ public struct MochaParameter
     public int m_Sight;
 }
 
+public struct MochaBehaviorInfo
+{
+    public float Delta;
+
+    public bool IsMove;
+
+    public float StateMaxTime;
+    public float StateNowTime;
+
+    public int MoveDirection;
+    public float MoveMaxTime;
+    public float MoveNowTime;
+}
+
+
 public class MochaControl : MonoBehaviour
 {
     public MochaParameter mocha_parameter;
     private MochaState MochaOldState;
 
-    private bool IsMove = false;
+    MochaBehaviorInfo mocha_behavior_info;
 
-    private float Delta = 0;
-    private int BreakCounter = 0;
+    [EnumLabel(typeof(MochaState))]
+    public Sprite[] MochaStateSprite = new Sprite[(int)MochaState.MAX_STATE];
+
+    SpriteRenderer MyMochaSpriteRenderer;
 
     GameObject my_object; // 自分自身の情報を入れる為の変数
 
@@ -35,11 +52,12 @@ public class MochaControl : MonoBehaviour
     GameObject prefab_generator_object;
     PrefabGenerator prefab_generator;
 
-    // Start is called before the first frame update
     void Start()
     {
         //this.mocha_parameter.m_State = MochaState.BREAK;
         this.MochaOldState = this.mocha_parameter.m_State;
+
+        MyMochaSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
         mocha_manager_object = GameObject.Find("MochasManager");
         mocha_manager = mocha_manager_object.GetComponent<MochasManager>();
@@ -50,14 +68,13 @@ public class MochaControl : MonoBehaviour
         // 自分自身の情報で初期化
         this.my_object = GameObject.Find(this.transform.name);
 
-        // このモチャに個別の名前を付ける
-        this.my_object.transform.name = mocha_manager.GenerateNamingMocha();
-
         // このモチャをMochasManagerのMochaListの一番最後に追加する
         mocha_manager.AddMochaList(this.my_object);
+
+        mocha_behavior_info.StateMaxTime = 30.0f;
+        mocha_behavior_info.StateNowTime = 0.0f;
     }
 
-    // Update is called once per frame
     void Update()
     {
         StartState();
@@ -65,22 +82,22 @@ public class MochaControl : MonoBehaviour
         switch (this.mocha_parameter.m_State)
         {
             case MochaState.BREAK:
-                Break();
+                UpdateBreak();
                 break;
             case MochaState.BREED:
-                Breed();
+                UpdateBreed();
                 break;
             case MochaState.CONSTRUCT:
-                Construct();
+                UpdateConstruct();
                 break;
             case MochaState.REORGANIZE:
-                Reorganize();
+                UpdateReorganize();
                 break;
             case MochaState.EMIGRATE:
-                Emigrate();
+                UpdateEmigrate();
                 break;
             case MochaState.MEAL:
-                Meal();
+                UpdateMeal();
                 break;
         }
     }
@@ -89,104 +106,138 @@ public class MochaControl : MonoBehaviour
     {
         if (this.MochaOldState != this.mocha_parameter.m_State)
         {
-            this.MochaOldState = this.mocha_parameter.m_State;
-
             switch (this.mocha_parameter.m_State)
             {
                 case MochaState.BREAK:
-
+                    StartBreak();
                     break;
                 case MochaState.BREED:
-
+                    StartBreed();
                     break;
                 case MochaState.CONSTRUCT:
-                    this.IsMove = true;
+                    StartConstruct();
                     break;
                 case MochaState.REORGANIZE:
-                    this.IsMove = true;
+                    StartReorganize();
                     break;
                 case MochaState.EMIGRATE:
-
+                    StartEmigrate();
                     break;
                 case MochaState.MEAL:
-                    this.IsMove = true;
+                    StartMeal();
                     break;
             }
+
+            this.MochaOldState = this.mocha_parameter.m_State;
+
         }
     }
 
-    // 各ステートの挙動で毎フレーム一秒経つごとにtrue
-    private bool OneSecond()
+    // 休憩の準備
+    private void StartBreak()
     {
-        this.Delta += Time.deltaTime;
-        if (Delta > 1.0f)
-        {
-            this.Delta = 0.0f;
-            return true;
-        }
+        MyMochaSpriteRenderer.sprite = MochaStateSprite[(int)MochaState.BREAK];
 
-        return false;
+        if (this.MochaOldState != this.mocha_parameter.m_State)
+        {
+            mocha_behavior_info.StateMaxTime = 10.0f;
+            mocha_behavior_info.StateNowTime = 0.0f;
+        }
+        mocha_behavior_info.MoveDirection = Random.Range(-1, 2);
+        mocha_behavior_info.MoveMaxTime = Random.Range(1.0f, 5.0f);
+        mocha_behavior_info.MoveNowTime = 0.0f;
     }
 
     // 休憩の挙動
-    private void Break()
+    private void UpdateBreak()
     {
-        if(OneSecond())
+        mocha_behavior_info.MoveNowTime += Time.deltaTime;
+        if(mocha_behavior_info.MoveNowTime >= mocha_behavior_info.MoveMaxTime)
         {
-            BreakCounter++;
-            if(BreakCounter >= 30)
-            {
-                BreakCounter = 0;
-                this.mocha_parameter.m_State = mocha_manager.MochaNextState(this.my_object);
-
-            }
+            StartBreak();
         }
+
+        float MoveDirection = mocha_behavior_info.MoveDirection / 10.0f;
+        UtillityMethod.PlanetRotate(this.gameObject, MoveDirection);
+
+        mocha_behavior_info.StateNowTime += Time.deltaTime;
+        if (mocha_behavior_info.StateNowTime >= mocha_behavior_info.StateMaxTime)
+        {
+            this.mocha_parameter.m_State = mocha_manager.MochaNextState(this.my_object);
+        }
+    }
+
+    // 繁殖の準備
+    private void StartBreed()
+    {
+        MyMochaSpriteRenderer.sprite = MochaStateSprite[(int)MochaState.BREED];
+
+        mocha_behavior_info.StateMaxTime = 10.0f;
+        mocha_behavior_info.StateNowTime = 0.0f;
     }
 
     // 繁殖の挙動
-    private void Breed()
+    private void UpdateBreed()
     {
-        if (OneSecond())
+        mocha_behavior_info.StateNowTime += Time.deltaTime;
+        if (mocha_behavior_info.StateNowTime >= mocha_behavior_info.StateMaxTime)
         {
-            BreakCounter++;
-            if (BreakCounter >= 10)
-            {
-                BreakCounter = 0;
-                this.mocha_parameter.m_State = MochaState.EMIGRATE;
+            this.mocha_parameter.m_State = mocha_manager.MochaNextState(this.my_object);
 
-
-                prefab_generator.CreatePrefab("Prefab/Mocha/MochaPrefab", this.transform.position, this.transform.eulerAngles);
-            }
+            prefab_generator.CreatePrefab("Prefab/Mocha/MochaPrefab", mocha_manager.GenerateNamingMocha(), this.transform.position, this.transform.eulerAngles);
         }
+    }
+
+    // 建築の準備
+    private void StartConstruct()
+    {
+        MyMochaSpriteRenderer.sprite = MochaStateSprite[(int)MochaState.CONSTRUCT];
+
+        mocha_behavior_info.IsMove = true;
+
+        mocha_behavior_info.MoveMaxTime = Random.Range(5.0f, 10.0f);
+        mocha_behavior_info.MoveNowTime = 0.0f;
+
+        mocha_behavior_info.StateNowTime = 0.0f;
     }
 
     // 建築の挙動
-    private void Construct()
+    private void UpdateConstruct()
     {
-        if (this.IsMove == true)
+        if (mocha_behavior_info.IsMove == true)
         {
-
+            UtillityMethod.PlanetRotate(this.gameObject, 0.1f);
+          
+            mocha_behavior_info.MoveNowTime += Time.deltaTime;
+            if (mocha_behavior_info.MoveNowTime >= mocha_behavior_info.MoveMaxTime)
+            {
+                mocha_behavior_info.IsMove = false;
+            }
         }
         else
         {
-            if (OneSecond())
+            mocha_behavior_info.StateNowTime -= Time.deltaTime;
+            if (mocha_behavior_info.StateNowTime <= 0.0f)
             {
-                if (this.mocha_parameter.m_Stamina > 0)
-                {
-                    this.mocha_parameter.m_Stamina--;
-                }
-                else
-                {
-                    this.mocha_parameter.m_State = mocha_manager.MochaNextState(this.my_object);
-                }
+                this.mocha_parameter.m_State = mocha_manager.MochaNextState(this.my_object);
             }
+
+            this.mocha_parameter.m_Stamina = (int)mocha_behavior_info.StateNowTime;
         }
     }
 
-    // 改装の挙動
-    private void Reorganize()
+    // 改装の準備
+    private void StartReorganize()
     {
-        if (this.IsMove == true)
+        MyMochaSpriteRenderer.sprite = MochaStateSprite[(int)MochaState.REORGANIZE];
+
+        mocha_behavior_info.IsMove = true;
+    }
+
+    // 改装の挙動
+    private void UpdateReorganize()
+    {
+        if (mocha_behavior_info.IsMove == true)
         {
 
         }
@@ -198,41 +249,63 @@ public class MochaControl : MonoBehaviour
 
     float A = 0.0f;
 
+    // 移動の準備
+    private void StartEmigrate()
+    {
+        MyMochaSpriteRenderer.sprite = MochaStateSprite[(int)MochaState.EMIGRATE];
+
+        mocha_behavior_info.StateMaxTime = 20.0f;
+        mocha_behavior_info.StateNowTime = 0.0f;
+    }
+
     // 移動の挙動
-    private void Emigrate()
+    private void UpdateEmigrate()
     {
         UtillityMethod.PlanetRotate(this.gameObject, 0.1f);
 
-        A += Time.deltaTime;
-
-        if(A >= 10.0f)
+        mocha_behavior_info.StateNowTime += Time.deltaTime;
+        if (mocha_behavior_info.StateNowTime >= mocha_behavior_info.StateMaxTime)
         {
-            this.mocha_parameter.m_State = MochaState.BREED;
-            A = 0.0f;
+            this.mocha_parameter.m_State = mocha_manager.MochaNextState(this.my_object);
         }
-        
+    }
+
+    // 食事の準備
+    private void StartMeal()
+    {
+        MyMochaSpriteRenderer.sprite = MochaStateSprite[(int)MochaState.MEAL];
+
+        mocha_behavior_info.IsMove = true;
+
+        mocha_behavior_info.MoveMaxTime = Random.Range(5.0f, 10.0f);
+        mocha_behavior_info.MoveNowTime = 0.0f;
+
+        mocha_behavior_info.StateMaxTime = 100.0f;
+        mocha_behavior_info.StateNowTime = this.mocha_parameter.m_Stamina;
     }
 
     // 食事の挙動
-    private void Meal()
+    private void UpdateMeal()
     {
-        if (this.IsMove == true)
+        if (mocha_behavior_info.IsMove == true)
         {
+            UtillityMethod.PlanetRotate(this.gameObject, -0.1f);
 
+            mocha_behavior_info.MoveNowTime += Time.deltaTime;
+            if (mocha_behavior_info.MoveNowTime >= mocha_behavior_info.MoveMaxTime)
+            {
+                mocha_behavior_info.IsMove = false;
+            }
         }
         else
         {
-            if (OneSecond())
+            mocha_behavior_info.StateNowTime += Time.deltaTime;
+            if (mocha_behavior_info.StateNowTime >= mocha_behavior_info.StateMaxTime)
             {
-                if (this.mocha_parameter.m_Stamina < 100)
-                {
-                    this.mocha_parameter.m_Stamina++;
-                }
-                else
-                {
-                    this.mocha_parameter.m_State = mocha_manager.MochaNextState(this.my_object);
-                }
+                this.mocha_parameter.m_State = mocha_manager.MochaNextState(this.my_object);
             }
+
+            this.mocha_parameter.m_Stamina = (int)mocha_behavior_info.StateNowTime;
         }
     }
 }
