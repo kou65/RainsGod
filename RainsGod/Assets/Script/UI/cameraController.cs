@@ -21,11 +21,13 @@ public class cameraController : MonoBehaviour
 
         if (DataBank.GetCurrScene() == Scene.TITLE)
         {
-            PrefabGenerator.CreateCloud(gameObject, "Prefab/UI/title_logoPrefab", new Vector3(0,10,0), 0, "Title_Logo");
+            PrefabGenerator.CreateChild(gameObject, "Prefab/UI/title_logoPrefab", new Vector3(0,10,0), 0, "Title_Logo");
 
-            PrefabGenerator.CreateCloud(gameObject, "Prefab/UI/player_dummyPrefab", new Vector3(0,14,0), 0, "player_dummy");
+            PrefabGenerator.CreateChild(gameObject, "Prefab/UI/player_dummyPrefab", new Vector3(0,14,0), 0, "player_dummy");
 
-            PrefabGenerator.CreateCloud(gameObject, "Prefab/UI/himoPrefab", new Vector3(-7,18,0), 0, "himo");
+            PrefabGenerator.CreateChild(gameObject, "Prefab/UI/himoPrefab", new Vector3(-7,18,0), 0, "himo");
+
+            PrefabGenerator.CreateChild(gameObject, "Prefab/UI/sky_bgPrefab", new Vector3(0, 10, 0), 0, "sky_bg");
         }
 
 

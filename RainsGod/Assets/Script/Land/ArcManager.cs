@@ -63,11 +63,11 @@ public class ArcManager : MonoBehaviour
             {
                 if (random_arc[i + 1] == (int)Attribute.GRASS)
                 {
-                    PrefabGenerator.CreateCloud(this.gameObject, "Prefab/land/grass2Prefab", this.transform.position, rotation, arc_name);
+                    PrefabGenerator.CreateChild(this.gameObject, "Prefab/land/grass2Prefab", this.transform.position, rotation, arc_name);
                 }
                 else
                 {
-                    PrefabGenerator.CreateCloud(this.gameObject, "Prefab/land/grassPrefab", this.transform.position, rotation, arc_name);
+                    PrefabGenerator.CreateChild(this.gameObject, "Prefab/land/grassPrefab", this.transform.position, rotation, arc_name);
                 }
 
             }
@@ -75,20 +75,20 @@ public class ArcManager : MonoBehaviour
             {
                 if (random_arc[i + 1] == (int)Attribute.SOLID)
                 {
-                    PrefabGenerator.CreateCloud(this.gameObject, "Prefab/land/solid2Prefab", this.transform.position, rotation, arc_name);
+                    PrefabGenerator.CreateChild(this.gameObject, "Prefab/land/solid2Prefab", this.transform.position, rotation, arc_name);
                 }
                 else
                 {
-                    PrefabGenerator.CreateCloud(this.gameObject, "Prefab/land/solidPrefab", this.transform.position, rotation, arc_name);
+                    PrefabGenerator.CreateChild(this.gameObject, "Prefab/land/solidPrefab", this.transform.position, rotation, arc_name);
                 }
             }
             else if (random_arc[i] == (int)Attribute.GRASS_SOLID)
             {
-                PrefabGenerator.CreateCloud(this.gameObject, "Prefab/land/grass_solidPrefab", this.transform.position, rotation, arc_name);
+                PrefabGenerator.CreateChild(this.gameObject, "Prefab/land/grass_solidPrefab", this.transform.position, rotation, arc_name);
             }
             else if (random_arc[i] == (int)Attribute.SOLID_GRASS)
             {
-                PrefabGenerator.CreateCloud(this.gameObject, "Prefab/land/solid_grassPrefab", this.transform.position, rotation, arc_name);
+                PrefabGenerator.CreateChild(this.gameObject, "Prefab/land/solid_grassPrefab", this.transform.position, rotation, arc_name);
             }
         }
 

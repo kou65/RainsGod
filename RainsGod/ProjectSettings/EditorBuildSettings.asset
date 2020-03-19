@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 6d3798bbb3d14624d82ac05adba05e10
+<<<<<<< HEAD
+=======
+  - enabled: 0
+    path: Assets/Scenes/ArcGenerator.unity
+    guid: 50c0a8d9d9255d94ea5f85f1c71da771
+>>>>>>> cc0cbdef04fbbad1ea18951c4fb6bab0be87b2f0
   m_configObjects: {}

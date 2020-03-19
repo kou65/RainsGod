@@ -6,21 +6,28 @@ public class playerController : MonoBehaviour
 {
 
     public GameObject[] arc_base = new GameObject[4];
-
-    public GameObject camera_controller;
-    public GameObject planet;
-
-    public bool has_strong = false;
-
     public GameObject[] building_obj = new GameObject[gameData.MAX_BUILDING];
     public BuildingBase[] building = new BuildingBase[gameData.MAX_BUILDING];
 
 
+    public bool has_strong = false;
+
+    SpriteRenderer sprite_render;
+
+    public Sprite strong_right_player;
+    public Sprite strong_left_player;
+    public Sprite strong_center_player;
+    public Sprite right_player;
+    public Sprite left_player;
+    public Sprite center_player;
+
     // Start is called before the first frame update
     void Start()
     {
-        camera_controller = GameObject.Find("Main Camera");
-        planet = GameObject.Find("en");
+        sprite_render = gameObject.GetComponent<SpriteRenderer>();
+
+        this.transform.localPosition = new Vector3(0,2,0);
+
         for (int i = 0; i < 4; i++)
         {
             string tmp_name = "base_arc" + (i+ 1);
@@ -34,16 +41,30 @@ public class playerController : MonoBehaviour
     void Update()
     {
 
-        Vector3 axis = new Vector3(0, 0, 1);
-
-        this.transform.position = 
-            new Vector3(
-                camera_controller.transform.position.x,
-                camera_controller.transform.position.y ,
-                0
-            ); 
-    
-        this.transform.rotation = camera_controller.transform.rotation;
+        if (gameData.speed < -gameData.MINIMUM_SPEED && !has_strong)
+        {
+            sprite_render.sprite = right_player; 
+        }
+        else if(gameData.speed > gameData.MINIMUM_SPEED && !has_strong)
+        {
+            sprite_render.sprite = left_player;
+        }
+        else if(gameData.speed < -gameData.MINIMUM_SPEED && has_strong)
+        {
+            sprite_render.sprite = strong_right_player;
+        }
+        else if(gameData.speed > gameData.MINIMUM_SPEED && has_strong)
+        {
+            sprite_render.sprite = strong_left_player;
+        }
+        else if(gameData.speed < gameData.MINIMUM_SPEED && gameData.speed > gameData.MINIMUM_SPEED && has_strong)
+        {
+            sprite_render.sprite = strong_center_player;
+        }
+        else
+        {
+            sprite_render.sprite = center_player;
+        }
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -96,6 +117,8 @@ public class playerController : MonoBehaviour
             {
                 string building_name = "building" + (i + 1);
                 building_obj[i] = GameObject.Find(building_name);
+
+                if (!building_obj[i]) { break; }
 
                 building[i] = building_obj[i].GetComponent<BuildingBase>();
 

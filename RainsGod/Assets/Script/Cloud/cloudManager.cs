@@ -59,7 +59,7 @@ public class cloudManager : MonoBehaviour
             string cloud_num = "cloud" + i;
 
 
-            PrefabGenerator.CreateCloud(this.gameObject, "Prefab/Cloud/kumoPrefab", new Vector3(Random.Range(-1.5f,1.5f), Random.Range(12, 15), 0), DEGREE * i, cloud_num);
+            PrefabGenerator.CreateChild(this.gameObject, "Prefab/Cloud/kumoPrefab", new Vector3(Random.Range(-1.5f,1.5f), Random.Range(12, 15), 0), DEGREE * i, cloud_num);
 
         }
     }
