@@ -128,6 +128,8 @@ public class playerController : MonoBehaviour
 
         for (int i = 0; i < gameData.MAX_BUILDING; i++)
         {
+            if (!building[i]) { continue; }
+
             if (!this.has_strong)
             {
                 continue;

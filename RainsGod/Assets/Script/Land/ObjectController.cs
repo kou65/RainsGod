@@ -33,7 +33,9 @@ public class ObjectController : MonoBehaviour
 
         pirce_pearent = three_parent.GetComponent<pirceBase>();
 
-        this.transform.localPosition = new Vector3(Random.Range(-3, 3), Random.Range(-3, 1), 0);
+        this.transform.localPosition = new Vector3(0, Random.Range(7.0f,9.5f), 0);
+
+        this.transform.RotateAround(parent.transform.position, new Vector3(0,0,1), Random.Range(-30,30));
 
         obj_type = (ObjectType)Random.Range(0, (int)ObjectType.NONE);
 

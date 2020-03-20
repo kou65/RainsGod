@@ -8,11 +8,11 @@ public class ObjectManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.transform.localPosition = new Vector3(0,8,0);
+       // this.transform.localPosition = new Vector3(0,8,0);
 
         for (int i = 0; i < gameData.MAX_OBJECT; i++)
         {
-            PrefabGenerator.CreateChild(this.gameObject,"Prefab/land/objPrefab", this.transform.position, this.transform.rotation.z,"LandObject");
+            PrefabGenerator.CreateChild(this.gameObject,"Prefab/land/objPrefab","LandObject");
         }
 
     }

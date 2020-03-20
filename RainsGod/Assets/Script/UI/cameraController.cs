@@ -54,6 +54,13 @@ public class cameraController : MonoBehaviour
 
             DestroyChild("Title_Logo");
             DestroyChild("player_dummy");
+
+            // イベント処理(くしゃみ)
+            if (EventDirector.can_achoo_event)
+            {
+                PrefabGenerator.CreateChild(gameObject, "Prefab/Event/AchooEventPrefab", new Vector3(0, 0, 0), 0, "Achoo!");
+                EventDirector.can_achoo_event = false;
+            }
         }
 
 

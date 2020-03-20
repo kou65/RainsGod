@@ -64,7 +64,7 @@ public class GameDirector : MonoBehaviour
         }
         this.message3.GetComponent<Text>().text = "SPACE：建築";
         this.message4.GetComponent<Text>().text = "ヒモチャ：全削除";
-        this.message5.GetComponent<Text>().text = "ENTER：生成";
+        this.message5.GetComponent<Text>().text = "ENTER：くしゃみ";
 
         if (destroy_event)
         {
