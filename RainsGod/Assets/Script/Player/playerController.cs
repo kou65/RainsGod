@@ -83,12 +83,14 @@ public class playerController : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
 
-
-        GameObject mocha = GameObject.Find("mocha");
-
+        for (int i = 0; i < 4; i++)
+        {
+            if (!arc_base[i]) { return; }
+        }
 
         if (collision.tag == "mocha")
         {
+            GameObject mocha = GameObject.Find("mocha");
             mocha.GetComponent<mochaController>().ChangeHasRain(true);
         }
         if (collision.tag == "base_arc1")
@@ -148,10 +150,14 @@ public class playerController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision_)
     {
-        GameObject mocha = GameObject.Find("mocha");
+        for (int i = 0; i < 4; i++)
+        {
+            if (!arc_base[i]) { return; }
+        }
 
         if (collision_.tag == "mocha")
         {
+            GameObject mocha = GameObject.Find("mocha");
             mocha.GetComponent<mochaController>().ChangeHasRain(false);
             Debug.Log("雨が当たってません");
 

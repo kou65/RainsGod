@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class himoController : MonoBehaviour
 {
-
-    public bool has_event = false;
-
     // Start is called before the first frame update
     void Start()
     {
-        
+        transform.localPosition = new Vector3(-7,8,10);
     }
 
     // Update is called once per frame
@@ -28,22 +25,19 @@ public class himoController : MonoBehaviour
             {
                 if (hit2d.collider.gameObject.CompareTag("himo"))
                 {
-                    has_event = true;
-
+                    EventDirector.StartPlanetInitEvent();
                 }
             }
         }
 
-        if (has_event)
-        {
-            if (InitEvent.InitPlanet())
-            {
-                has_event = false;
-            }
-        }
+
 
     }
 
-
+    public static void CreateHimo(GameObject obj_)
+    {
+        if (GameObject.Find("himo")) { return; }
+        PrefabGenerator.CreateChild(obj_, "Prefab/UI/himoPrefab", "himo");
+    }
 
 }

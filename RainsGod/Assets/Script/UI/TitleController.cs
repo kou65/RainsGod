@@ -34,9 +34,11 @@ public class TitleController : MonoBehaviour
                 sprite_render.sprite = sample_1;
                 break;
             case LogoStatus.SAMPLE_2:
+                this.transform.localPosition = new Vector3(0, 0, 10);
                 sprite_render.sprite = sample_2;
                 break;
             case LogoStatus.SAMPLE_3:
+                this.transform.localPosition = new Vector3(0, 0, 10);
                 sprite_render.sprite = sample_3;
                 break;
             case LogoStatus.SAMPLE_4:

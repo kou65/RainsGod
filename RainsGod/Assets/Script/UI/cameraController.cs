@@ -21,13 +21,11 @@ public class cameraController : MonoBehaviour
 
         if (DataBank.GetCurrScene() == Scene.TITLE)
         {
-            PrefabGenerator.CreateChild(gameObject, "Prefab/UI/title_logoPrefab", new Vector3(0,10,0), 0, "Title_Logo");
-
-            PrefabGenerator.CreateChild(gameObject, "Prefab/UI/player_dummyPrefab", new Vector3(0,14,0), 0, "player_dummy");
-
-            PrefabGenerator.CreateChild(gameObject, "Prefab/UI/himoPrefab", new Vector3(-7,18,0), 0, "himo");
+            //PrefabGenerator.CreateChild(gameObject, "Prefab/UI/title_logoPrefab", new Vector3(0,10,0), 0, "Title_Logo");
 
             PrefabGenerator.CreateChild(gameObject, "Prefab/UI/sky_bgPrefab", new Vector3(0, 10, 0), 0, "sky_bg");
+
+            PrefabGenerator.CreateChild(gameObject, "Prefab/Event/TitleEnd/TitleEndPrefab", "TitleEnd");
         }
 
 
@@ -52,14 +50,14 @@ public class cameraController : MonoBehaviour
                 transform.rotation = new Quaternion(0, 0, 0, 0);
             }
 
-            DestroyChild("Title_Logo");
-            DestroyChild("player_dummy");
+            himoController.CreateHimo(gameObject);
+
+            DestroyChild("TitleEnd");
 
             // イベント処理(くしゃみ)
             if (EventDirector.can_achoo_event)
             {
-                PrefabGenerator.CreateChild(gameObject, "Prefab/Event/AchooEventPrefab", new Vector3(0, 0, 0), 0, "Achoo!");
-                EventDirector.can_achoo_event = false;
+                EventDirector.StartAchooEvent(gameObject);
             }
         }
 
