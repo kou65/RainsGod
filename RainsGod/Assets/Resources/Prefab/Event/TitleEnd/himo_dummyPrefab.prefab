@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6290557822290161783}
   - component: {fileID: 1059074263359692399}
   m_Layer: 0
-  m_Name: himoPrefab
+  m_Name: himo_dummyPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 99
-  m_Sprite: {fileID: 21300000, guid: 4b4f8f0de33e34444b5bb183b50b9c16, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ff28ee7f99372b74eafedb88dabfd164, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,5 +95,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj_type: 1
-  gravity_accel: 0
+  himo_gravity_accel: -0.05
   reaction: 0
+  player_gravity_accel: -0.02

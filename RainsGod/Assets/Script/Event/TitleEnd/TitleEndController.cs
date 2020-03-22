@@ -45,7 +45,7 @@ public class TitleEndController : MonoBehaviour
                 //transform.localPosition = new Vector3(0, 14, 0);
                 break;
             case TitleObject.HIMO:
-                transform.localPosition = new Vector3(-7, 16, 10);
+                transform.localPosition = new Vector3(-7, 10, 10);
                 break;
             case TitleObject.TITLE:
                 break;
@@ -88,9 +88,9 @@ public class TitleEndController : MonoBehaviour
             himo_gravity_accel -= GRAVITY * Time.deltaTime;
 
 
-            if (transform.localPosition.y <= 8.0f)
+            if (transform.localPosition.y <= 3.0f)
             {
-                transform.localPosition = new Vector3(-7, 8, 10);
+                transform.localPosition = new Vector3(-7, 3, 10);
 
                 reaction = -himo_gravity_accel - DISTRIBUTION_FORCE;
                 himo_gravity_accel = reaction;

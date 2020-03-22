@@ -7,7 +7,7 @@ public class himoController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.localPosition = new Vector3(-7,8,10);
+        transform.localPosition = new Vector3(-7, 3, 10);
     }
 
     // Update is called once per frame
