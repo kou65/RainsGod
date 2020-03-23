@@ -38,6 +38,7 @@ public class MochaControl : MonoBehaviour
     private MochaState MochaOldState;
 
     MochaBehaviorInfo mocha_behavior_info;
+    private int OldMoveDirection;
 
     [EnumLabel(typeof(MochaState))]
     public Sprite[] MochaStateSprite = new Sprite[(int)MochaState.MAX_STATE];
@@ -57,6 +58,8 @@ public class MochaControl : MonoBehaviour
     {
         //this.mocha_parameter.m_State = MochaState.BREAK;
         this.MochaOldState = this.mocha_parameter.m_State;
+
+        this.OldMoveDirection = 0;
 
         MyMochaSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
@@ -80,6 +83,7 @@ public class MochaControl : MonoBehaviour
     void Update()
     {
         StartState();
+        StartAnimationMotion();
 
         switch (this.mocha_parameter.m_State)
         {
@@ -104,10 +108,12 @@ public class MochaControl : MonoBehaviour
         }
     }
 
-    public void StartState()
+    private void StartState()
     {
         if (this.MochaOldState != this.mocha_parameter.m_State)
         {
+            my_animator.SetBool("IsWalkMove", false);
+
             switch (this.mocha_parameter.m_State)
             {
                 case MochaState.BREAK:
@@ -131,25 +137,39 @@ public class MochaControl : MonoBehaviour
             }
 
             this.MochaOldState = this.mocha_parameter.m_State;
-
         }
     }
 
-    // アニメーションの処理
-    public void MoveMotion(float mocha_move_num_)
+    private void StartAnimationMotion()
     {
-        my_animator.SetFloat("WalkMoveNum", mocha_move_num_);
-
-        if (mocha_move_num_ == 0)
+        if (this.OldMoveDirection != mocha_behavior_info.MoveDirection)
         {
-            my_animator.StopPlayback();
+            if (mocha_behavior_info.MoveDirection != 0)
+            {
+                my_animator.SetBool("IsWalkMove", true);
+            }
+            else
+            {
+                my_animator.SetBool("IsWalkMove", false);
+            }
+
+            this.OldMoveDirection = mocha_behavior_info.MoveDirection;
+
+            if(this.OldMoveDirection == -1)
+            {
+                my_animator.SetFloat("WalkMoveNum", this.OldMoveDirection);
+            }
+            else if(this.OldMoveDirection == 1)
+            {
+                my_animator.SetFloat("WalkMoveNum", this.OldMoveDirection);
+            }
         }
     }
 
     // 休憩の準備
     private void StartBreak()
     {
-        MyMochaSpriteRenderer.sprite = MochaStateSprite[(int)MochaState.BREAK];
+        //MyMochaSpriteRenderer.sprite = MochaStateSprite[(int)MochaState.BREAK];
 
         if (this.MochaOldState != this.mocha_parameter.m_State)
         {
@@ -159,17 +179,6 @@ public class MochaControl : MonoBehaviour
         mocha_behavior_info.MoveDirection = Random.Range(-1, 2);
         mocha_behavior_info.MoveMaxTime = Random.Range(1.0f, 5.0f);
         mocha_behavior_info.MoveNowTime = 0.0f;
-
-        if(mocha_behavior_info.MoveDirection != 0)
-        {
-            my_animator.SetBool("IsWalkMove", true);
-        }
-        else
-        {
-            my_animator.SetBool("IsWalkMove", false);
-        }
-
-        MoveMotion(mocha_behavior_info.MoveDirection);
     }
 
     // 休憩の挙動
@@ -220,6 +229,7 @@ public class MochaControl : MonoBehaviour
 
         mocha_behavior_info.IsMove = true;
 
+        mocha_behavior_info.MoveDirection = 1;
         mocha_behavior_info.MoveMaxTime = Random.Range(5.0f, 10.0f);
         mocha_behavior_info.MoveNowTime = 0.0f;
 
@@ -231,12 +241,14 @@ public class MochaControl : MonoBehaviour
     {
         if (mocha_behavior_info.IsMove == true)
         {
-            UtillityMethod.PlanetRotate(this.gameObject, 0.1f);
+            float MoveDirection = mocha_behavior_info.MoveDirection / 20.0f;
+            UtillityMethod.PlanetRotate(this.gameObject, MoveDirection);
           
             mocha_behavior_info.MoveNowTime += Time.deltaTime;
             if (mocha_behavior_info.MoveNowTime >= mocha_behavior_info.MoveMaxTime)
             {
                 mocha_behavior_info.IsMove = false;
+                my_animator.SetBool("IsWalkMove", false);
             }
         }
         else
@@ -279,17 +291,19 @@ public class MochaControl : MonoBehaviour
     {
         MyMochaSpriteRenderer.sprite = MochaStateSprite[(int)MochaState.EMIGRATE];
 
-        mocha_behavior_info.StateMaxTime = 20.0f;
-        mocha_behavior_info.StateNowTime = 0.0f;
+        mocha_behavior_info.MoveDirection = 1;
+        mocha_behavior_info.MoveMaxTime = 20.0f;
+        mocha_behavior_info.MoveNowTime = 0.0f;
     }
 
     // 移動の挙動
     private void UpdateEmigrate()
     {
-        UtillityMethod.PlanetRotate(this.gameObject, 0.1f);
+        float MoveDirection = mocha_behavior_info.MoveDirection / 20.0f;
+        UtillityMethod.PlanetRotate(this.gameObject, MoveDirection);
 
-        mocha_behavior_info.StateNowTime += Time.deltaTime;
-        if (mocha_behavior_info.StateNowTime >= mocha_behavior_info.StateMaxTime)
+        mocha_behavior_info.MoveNowTime += Time.deltaTime;
+        if (mocha_behavior_info.MoveNowTime >= mocha_behavior_info.MoveMaxTime)
         {
             this.mocha_parameter.m_State = mocha_manager.MochaNextState(this.my_object);
         }
@@ -302,6 +316,7 @@ public class MochaControl : MonoBehaviour
 
         mocha_behavior_info.IsMove = true;
 
+        mocha_behavior_info.MoveDirection = -1;
         mocha_behavior_info.MoveMaxTime = Random.Range(5.0f, 10.0f);
         mocha_behavior_info.MoveNowTime = 0.0f;
 
@@ -314,12 +329,14 @@ public class MochaControl : MonoBehaviour
     {
         if (mocha_behavior_info.IsMove == true)
         {
-            UtillityMethod.PlanetRotate(this.gameObject, -0.1f);
+            float MoveDirection = mocha_behavior_info.MoveDirection / 20.0f;
+            UtillityMethod.PlanetRotate(this.gameObject, MoveDirection);
 
             mocha_behavior_info.MoveNowTime += Time.deltaTime;
             if (mocha_behavior_info.MoveNowTime >= mocha_behavior_info.MoveMaxTime)
             {
                 mocha_behavior_info.IsMove = false;
+                my_animator.SetBool("IsWalkMove", false);
             }
         }
         else
