@@ -23,7 +23,6 @@ public class TitleEndController : MonoBehaviour
     public float reaction = 0.0f;
 
     public float player_gravity_accel = -0.02f;
-    float count = 0.0f;
 
     bool can_hoist = false;
 
@@ -107,24 +106,24 @@ public class TitleEndController : MonoBehaviour
     {
         if (obj_type == TitleObject.PLAYER)
         {
+            if (transform.localPosition.y <= 4.0f)
+            {
+                transform.localPosition = new Vector3(0, 4, 10);
+                can_end[(int)TitleObject.PLAYER] = true;
+                return;
+            }
 
             float breek = 0.01f;
 
             player_gravity_accel += breek * Time.deltaTime;
 
-            if (player_gravity_accel >= 0)
+            if (player_gravity_accel >= -0.01f)
             {
-                player_gravity_accel = 0.0f;
+                player_gravity_accel = -0.01f;
             }
 
             transform.Translate(0, player_gravity_accel, 0);
 
-
-            if (transform.localPosition.y <= 4.0f)
-            {
-                transform.localPosition = new Vector3(0, 4, 10);
-                can_end[(int)TitleObject.PLAYER] = true;
-            }
         }
     }
 
