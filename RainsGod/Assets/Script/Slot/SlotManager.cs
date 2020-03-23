@@ -46,6 +46,7 @@ public class SlotManager : MonoBehaviour
     // オブジェクト最大数
     const int MAX_OBJECT_SLOT_NUM = 20;
 
+    // 最大オブジェクト数
     const int OBJECT_NUM = 3;
 
     // プレハブオブジェクト
@@ -72,10 +73,9 @@ public class SlotManager : MonoBehaviour
     // 各オブジェクト配列
     List <Slot> m_plant_slot_list;
     List <Slot> m_arch_slot_list;
-    List <Slot> m_food_slot_list;
+    //List <Slot> m_food_slot_list;
 
     // モチャリストからも茶の名前を取ってくる
-
 
     void Init()
     {
@@ -83,7 +83,7 @@ public class SlotManager : MonoBehaviour
         // 可変長配列生成
         m_plant_slot_list = new List<Slot>();
         m_arch_slot_list = new List<Slot>();
-        m_food_slot_list = new List<Slot>();
+        //m_food_slot_list = new List<Slot>();
 
         m_obj_num_list = new int[(int)SlotElement.TOTAL];
 
@@ -97,6 +97,11 @@ public class SlotManager : MonoBehaviour
     {
         // 選んだスロットから最大数を取り出す
         return m_obj_num_list[(int)slot_elem];
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //m_planet_slot_list[0].p_obj.tag = collision.tag;
     }
 
     // 選択したスロットを返す
@@ -124,7 +129,7 @@ public class SlotManager : MonoBehaviour
                 break;
 
             case SlotElement.FOOD:
-                slot = m_food_slot_list[slot_num % total_obj_num];
+                //slot = m_food_slot_list[slot_num % total_obj_num];
                 break;
         }
         return slot;
@@ -285,6 +290,7 @@ public class SlotManager : MonoBehaviour
                 // 20あまり算
                 int rand_num = (Random.Range(0, MAX_OBJECT_SLOT_NUM)) % MAX_OBJECT_SLOT_NUM;
 
+
                 // 制限
                 if (m_planet_slot_list[rand_num].p_obj != null)
                 {
@@ -297,7 +303,6 @@ public class SlotManager : MonoBehaviour
                 m_planet_slot_list[rand_num].slot_element = slot_element_list[j];
 
                 obj_count++;
-
             }
         }
     }
@@ -309,17 +314,17 @@ public class SlotManager : MonoBehaviour
         GameObject get_obj;
 
         // 最大スロット数分
-        for (int i = 0;i < MAX_OBJECT_SLOT_NUM;i++)
+        for (int i = 0; i < MAX_OBJECT_SLOT_NUM; i++)
         {
 
-            //Vector3 pos = new Vector3(32 * i, 0, 0);
-            //Vector3 axis = new Vector3(32 * i, 0, 0);
-            //float angle = Time.deltaTime;
+            Vector3 pos = new Vector3(32 * i, 0, 0);
+            Vector3 axis = new Vector3(32 * i, 0, 0);
+            float angle = Time.deltaTime;
 
-            //transform.RotateAround(pos, axis, angle);
+            transform.RotateAround(pos, axis, angle);
 
-            // ローテーション
-            UtillityMethod.PlanetRotate(this.gameObject,15);
+
+            UtillityMethod.PlanetRotate(this.gameObject, 15);
 
             // 入っていないならもう一度
             if (m_planet_slot_list[i].p_obj == null)
@@ -327,29 +332,42 @@ public class SlotManager : MonoBehaviour
                 continue;
             }
 
+
             // 生成
             get_obj = Instantiate(m_planet_slot_list[i].p_obj,
                 transform.position, Quaternion.identity);
 
             // 全体配列に代入
-            m_planet_slot_list[i].p_obj = get_obj;
+            //m_planet_slot_list[i].p_obj = get_obj;
+
+            // コピー用スロット作成
+            Slot slot;
+            slot = m_planet_slot_list[i];
+
+            // 生成名から生成物を取得
+            slot.p_obj = GameObject.Find(get_obj.name);
 
             // それぞれの配列に代入
             switch (m_planet_slot_list[i].slot_element) {
 
                 case SlotElement.ARCH:
-                    m_arch_slot_list.Add(m_planet_slot_list[i]);
+                    // リストに追加
+                    m_arch_slot_list.Add(slot);
                     break;
 
                 case SlotElement.PLANT:
-                    m_plant_slot_list.Add(m_planet_slot_list[i]);
+                    // リストに追加
+                    m_plant_slot_list.Add(slot);
                     break;
 
                 case SlotElement.FOOD:
-                    m_food_slot_list.Add(m_planet_slot_list[i]);
+                    // リストに追加
+                    //m_food_slot_list.Add(slot);
                     break;
             }
 
+            // 固定用スロットにも生成物追加
+            m_planet_slot_list[i].p_obj = slot.p_obj;
         }
     }
 
@@ -362,6 +380,7 @@ public class SlotManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //m_food_slot_list[0].p_obj.transform.position = new Vector3(0.0f, 4.0f, 0.0f);
+        //m_arch_slot_list[0].p_obj.transform.position = new Vector3(0.0f, 1.0f, 0.0f);
     }
 }

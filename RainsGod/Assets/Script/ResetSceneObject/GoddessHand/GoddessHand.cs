@@ -30,7 +30,7 @@ public class GoddessHand : MonoBehaviour
     const float UP_TIME_INTERVAL = 0.0f;
 
     // 下に止まる位置
-    const float DOWN_STOP_POS = 2.0f;
+    const float DOWN_STOP_POS = 5.0f;
 
     // 上に止まる位置
     const float UP_STOP_POS = 0.0f;
@@ -40,6 +40,7 @@ public class GoddessHand : MonoBehaviour
 
     // 間隔時間
     float m_interval_timer;
+    float m_drop_timer;
 
     // 状態
     State m_state;
@@ -52,7 +53,6 @@ public class GoddessHand : MonoBehaviour
     {
         return m_state;
     }
-
 
     void DebugFunction()
     {
@@ -68,6 +68,7 @@ public class GoddessHand : MonoBehaviour
         m_pos = new Vector3(0.0f,INIT_POS_Y,0.0f);
 
         m_interval_timer = 0.0f;
+        m_drop_timer = 0.0f;
         m_state = State.DOWN;
     }
 
@@ -75,7 +76,7 @@ public class GoddessHand : MonoBehaviour
     {
 
         // 落ちる位置まで来てないなら
-        if (DOWN_STOP_POS >= m_pos.y
+        if (INIT_POS_Y >= m_pos.y + DOWN_STOP_POS
             && m_state == State.DOWN)
         {
 
@@ -86,10 +87,13 @@ public class GoddessHand : MonoBehaviour
         else if (m_state == State.DROP)
         {
             // 落としている時間
-            if (Time.time >= DROP_TIME)
+            if (m_drop_timer >= DROP_TIME)
             {
                 m_state = State.UP;
             }
+
+            // 落としている時間加算
+            m_drop_timer+=Time.deltaTime;
         }
 
     }
