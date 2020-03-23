@@ -6,29 +6,31 @@ using UnityEngine.SceneManagement;
 public class OpDirector : MonoBehaviour
 {
 
-    public GameObject camera_controller;
-    public GameObject planet;
-
+    public static bool can_title_end = false;
     // Start is called before the first frame update
     void Start()
     {
 
-        camera_controller = GameObject.Find("Main Camera");
-        planet = GameObject.Find("en");
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 axis = new Vector3(0, 0, 1);
-
-        transform.RotateAround(planet.transform.position, axis, gameData.speed);
 
         if (Input.GetMouseButtonDown(0))
         {
-            SceneManager.LoadScene("GameScene");
+            can_title_end = true;
         }
+        if (can_title_end)
+        {
 
+            // 処理の終わりにシーンエンド
+        }
     }
+
+    public static void StartTitleEnd(GameObject obj_)
+    {
+        PrefabGenerator.CreateChild(obj_, "Prefab/Event/TitleEndPrefab", "TitleEnd");
+    } 
 }

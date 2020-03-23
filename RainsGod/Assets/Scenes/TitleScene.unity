@@ -260,8 +260,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1871c385017e8654ba4d85543d4c12fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera_controller: {fileID: 0}
-  planet: {fileID: 0}
 --- !u!1 &573321175
 GameObject:
   m_ObjectHideFlags: 0

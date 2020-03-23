@@ -4,9 +4,6 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - under_construction: {instanceID: 0}
-  - comprite_construction: {instanceID: 0}
-  - ruin_construction: {instanceID: 0}
   - lv1_build_type_a: {fileID: 864712046597472693, guid: ce1bbc5c7d0140b45932c857707d9f37,
       type: 3}
   - lv2_build_type_a: {fileID: -1722508188889771468, guid: ce1bbc5c7d0140b45932c857707d9f37,
@@ -19,41 +16,41 @@ MonoImporter:
       type: 3}
   - lv3_build_type_b: {fileID: -1754716862012168063, guid: ce1bbc5c7d0140b45932c857707d9f37,
       type: 3}
-  - lv1_build_type_c: {fileID: 6436010880088496225, guid: ce1bbc5c7d0140b45932c857707d9f37,
+  - lv1_build_type_c: {fileID: -5076487698774462686, guid: ce1bbc5c7d0140b45932c857707d9f37,
       type: 3}
-  - lv2_build_type_c: {fileID: 8994560843106274726, guid: ce1bbc5c7d0140b45932c857707d9f37,
+  - lv2_build_type_c: {fileID: 8937836802000983089, guid: ce1bbc5c7d0140b45932c857707d9f37,
       type: 3}
-  - lv3_build_type_c: {fileID: 4567008801741880738, guid: ce1bbc5c7d0140b45932c857707d9f37,
+  - lv3_build_type_c: {fileID: -1754716862012168063, guid: ce1bbc5c7d0140b45932c857707d9f37,
       type: 3}
-  - lv1_build_type_d: {fileID: 6436010880088496225, guid: ce1bbc5c7d0140b45932c857707d9f37,
+  - lv1_build_type_d: {fileID: -2709020447489649543, guid: ce1bbc5c7d0140b45932c857707d9f37,
       type: 3}
-  - lv2_build_type_d: {fileID: 8994560843106274726, guid: ce1bbc5c7d0140b45932c857707d9f37,
+  - lv2_build_type_d: {fileID: -6093487588172340940, guid: ce1bbc5c7d0140b45932c857707d9f37,
       type: 3}
-  - lv3_build_type_d: {fileID: 4567008801741880738, guid: ce1bbc5c7d0140b45932c857707d9f37,
+  - lv3_build_type_d: {fileID: 2311699596246959550, guid: ce1bbc5c7d0140b45932c857707d9f37,
       type: 3}
-  - lv1_complete_type_a: {fileID: 790470137615172831, guid: ce1bbc5c7d0140b45932c857707d9f37,
+  - lv1_complete_type_a: {fileID: 4823495409052888061, guid: ce1bbc5c7d0140b45932c857707d9f37,
       type: 3}
-  - lv2_complete_type_a: {fileID: -7258425970197359311, guid: ce1bbc5c7d0140b45932c857707d9f37,
+  - lv2_complete_type_a: {fileID: -374550079022293680, guid: ce1bbc5c7d0140b45932c857707d9f37,
       type: 3}
-  - lv3_complete_type_a: {fileID: 4823495409052888061, guid: ce1bbc5c7d0140b45932c857707d9f37,
+  - lv3_complete_type_a: {fileID: -8378847350539613787, guid: ce1bbc5c7d0140b45932c857707d9f37,
       type: 3}
-  - lv1_complete_type_b: {fileID: -374550079022293680, guid: ce1bbc5c7d0140b45932c857707d9f37,
+  - lv1_complete_type_b: {fileID: -6707588400835457420, guid: ce1bbc5c7d0140b45932c857707d9f37,
       type: 3}
-  - lv2_complete_type_b: {fileID: -8378847350539613787, guid: ce1bbc5c7d0140b45932c857707d9f37,
+  - lv2_complete_type_b: {fileID: -4459018643688561660, guid: ce1bbc5c7d0140b45932c857707d9f37,
       type: 3}
-  - lv3_complete_type_b: {fileID: -6324371965445071770, guid: ce1bbc5c7d0140b45932c857707d9f37,
+  - lv3_complete_type_b: {fileID: 201673061305353709, guid: ce1bbc5c7d0140b45932c857707d9f37,
       type: 3}
-  - lv1_complete_type_c: {fileID: -6093487588172340940, guid: ce1bbc5c7d0140b45932c857707d9f37,
+  - lv1_complete_type_c: {fileID: -6324371965445071770, guid: ce1bbc5c7d0140b45932c857707d9f37,
       type: 3}
   - lv2_complete_type_c: {fileID: 2556119794157490102, guid: ce1bbc5c7d0140b45932c857707d9f37,
       type: 3}
   - lv3_complete_type_c: {fileID: 2573224475016521573, guid: ce1bbc5c7d0140b45932c857707d9f37,
       type: 3}
-  - lv1_complete_type_d: {fileID: 2311699596246959550, guid: ce1bbc5c7d0140b45932c857707d9f37,
+  - lv1_complete_type_d: {fileID: 2529051903112239336, guid: ce1bbc5c7d0140b45932c857707d9f37,
       type: 3}
-  - lv2_complete_type_d: {fileID: -6707588400835457420, guid: ce1bbc5c7d0140b45932c857707d9f37,
+  - lv2_complete_type_d: {fileID: 790470137615172831, guid: ce1bbc5c7d0140b45932c857707d9f37,
       type: 3}
-  - lv3_complete_type_d: {fileID: -2709020447489649543, guid: ce1bbc5c7d0140b45932c857707d9f37,
+  - lv3_complete_type_d: {fileID: -7258425970197359311, guid: ce1bbc5c7d0140b45932c857707d9f37,
       type: 3}
   executionOrder: 0
   icon: {instanceID: 0}

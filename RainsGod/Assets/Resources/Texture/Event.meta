@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 03268dfa0810aa34182e860957cafd04
+=======
+guid: d8d009aacc272724f813c5e105ce15d3
+>>>>>>> kasugai2
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

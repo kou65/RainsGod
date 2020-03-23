@@ -33,6 +33,46 @@ public class PrefabGenerator : MonoBehaviour
     }
 
 
+    public static void CreateChild(GameObject obj_,string prefab_name_, string new_object_name_)
+    {
+        Vector3 axis = new Vector3(0, 0, 1);
+
+        GameObject blueprint = (GameObject)Resources.Load(prefab_name_);
+        GameObject prefab = Instantiate(blueprint);
+
+        prefab.transform.localPosition = obj_.transform.position;
+        prefab.transform.localRotation = obj_.transform.rotation;
+
+        prefab.transform.parent = obj_.transform;
+
+        // 命名とラベル作成
+        prefab.name = new_object_name_;
+#if UNITY_EDITOR
+        TagMaker.AddTag(new_object_name_);
+#endif
+        prefab.tag = new_object_name_;
+
+    }
+    public static void CreateChild(GameObject obj_, Vector3 position_, string prefab_name_, string new_object_name_)
+    {
+        Vector3 axis = new Vector3(0, 0, 1);
+
+        GameObject blueprint = (GameObject)Resources.Load(prefab_name_);
+        GameObject prefab = Instantiate(blueprint);
+
+        prefab.transform.localPosition = new Vector3(position_.x, position_.y, position_.z);
+        prefab.transform.localRotation = obj_.transform.rotation;
+
+        prefab.transform.parent = obj_.transform;
+
+        // 命名とラベル作成
+        prefab.name = new_object_name_;
+#if UNITY_EDITOR
+        TagMaker.AddTag(new_object_name_);
+#endif
+        prefab.tag = new_object_name_;
+
+    }
     public static void CreateChild(GameObject obj_, string prefab_name_, Vector3 position_, float degree_, string new_object_name_)
     {
         Vector3 axis = new Vector3(0, 0, 1);

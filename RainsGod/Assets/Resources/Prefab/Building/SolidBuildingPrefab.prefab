@@ -223,9 +223,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa4531a6fcc09dd43a6fa8892b5d9f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  under_construction: {fileID: 0}
-  comprite_construction: {fileID: 0}
-  ruin_construction: {fileID: 0}
   lv1_build_type_a: {fileID: -7707257977478730834, guid: ce1bbc5c7d0140b45932c857707d9f37,
     type: 3}
   lv2_build_type_a: {fileID: -320008173966656340, guid: ce1bbc5c7d0140b45932c857707d9f37,
@@ -279,4 +276,3 @@ MonoBehaviour:
   status: 0
   building_level: 3
   building_type: 4
-  final_building_type: 24

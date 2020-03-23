@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 228595614798342056}
   - component: {fileID: 2672687973872086123}
+  - component: {fileID: 7453793720107808461}
   m_Layer: 0
   m_Name: title_logoPrefab
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 7146349984873151921}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -70,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 99
-  m_Sprite: {fileID: 21300000, guid: 873a5b95b83eabf4ab53849d412ab880, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -78,6 +79,27 @@ SpriteRenderer:
   m_Size: {x: 12.8, y: 7.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7453793720107808461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7146349984873151921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5de9fef5ba4e27341a1471ec3462da21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sample_1: {fileID: -4951018432093814479, guid: e29a2d364ed7b8e488e3829f6cbaa7b2,
+    type: 3}
+  sample_2: {fileID: -3595284946213941878, guid: e29a2d364ed7b8e488e3829f6cbaa7b2,
+    type: 3}
+  sample_3: {fileID: -1174997436736007180, guid: e29a2d364ed7b8e488e3829f6cbaa7b2,
+    type: 3}
+  sample_4: {fileID: -457068991201709296, guid: e29a2d364ed7b8e488e3829f6cbaa7b2,
+    type: 3}
+  status: 1

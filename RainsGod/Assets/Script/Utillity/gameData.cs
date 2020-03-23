@@ -66,6 +66,12 @@ public enum Scene
     NONE
 }
 
+public enum GlobalEvent
+{
+    PLANET_INIT,
+    ACHOO,
+    ETC
+}
 
 
 public class gameData : MonoBehaviour
@@ -94,24 +100,14 @@ public class gameData : MonoBehaviour
     // 建築物の回復速度
     public const int BUILDING_REPAIR = 10;
 
-    public static float speed = 0.0f;
+    public static float speed;
 
-    Vector2 startPos;
+
+
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            this.startPos = Input.mousePosition;
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            Vector2 endPos = Input.mousePosition;
-            float swipeLength = endPos.x - this.startPos.x;
-            speed = swipeLength / 500.0f;
-        }
-        speed *= DECLERATION;
-
+        speed = Calculater.speed;
     }
 
 }
