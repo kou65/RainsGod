@@ -28,7 +28,7 @@ public class Seed : MonoBehaviour
     {
 
         // オブジェクト名から取得
-        obj = GameObject.Find("GoddessHandS");
+        obj = GameObject.Find("GoddessHandS(Clone)");
 
         // GoddessHandの中にあるGoddessHandを取得して変数に格納
         m_god = obj.GetComponent<GoddessHand>();

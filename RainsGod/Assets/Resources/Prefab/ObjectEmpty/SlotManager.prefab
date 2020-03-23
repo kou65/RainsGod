@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c13db3fe3e4a0824ba95d09b52ccc2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_plant_obj: {fileID: 7727350416106447937, guid: 8dfd67de5186dfb4b90da4c215a599cc,
+  m_plant_obj: {fileID: 8237765657802069598, guid: 8dfd67de5186dfb4b90da4c215a599cc,
     type: 3}
   m_arch_obj: {fileID: 1883242832310394064, guid: 07b169fd6691a6a4eaade050d834a73a,
     type: 3}

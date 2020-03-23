@@ -24,7 +24,7 @@ public class WaterFall : MonoBehaviour
         //prefab = (Water)Resources.Load("Prefab/Water");
 
         // 一つだけ生成
-       m_water = Instantiate(prefab, new Vector3(0.0f,50.0f,0.0f),Quaternion.identity);
+       m_water = Instantiate(prefab, new Vector3(0.0f,20.0f,0.0f),Quaternion.identity);
 
         m_is_end = false;
     }

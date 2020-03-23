@@ -6,13 +6,13 @@ public class Water : MonoBehaviour
 {
 
     // 11.fから
-    const float INIT_Y_POS = 11.0f;
+    const float INIT_Y_POS = 16.0f;
 
     // 13.fおろす
     const float END_POS_DISTANCE = 13.0f;
 
     // おろす速度
-    const float DOWN_SPEED = 0.01f;
+    const float DOWN_SPEED = 0.1f;
 
 
     private bool is_end;

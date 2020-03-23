@@ -40,7 +40,7 @@ public class ResetSceneManager : MonoBehaviour
         if (get_water_fall.IsEnd() == true && m_state == State.WATER_FALL_SCENE)
         {
             // 女神の手生成
-            Instantiate(m_goddess_hand,new Vector3(0.0f,5.0f,0.0f), Quaternion.identity);
+            Instantiate(m_goddess_hand,new Vector3(0.0f,7.0f,0.0f), Quaternion.identity);
 
             m_state = State.GODDESS_HAND_SCENE;
         }
