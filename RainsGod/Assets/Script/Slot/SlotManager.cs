@@ -99,6 +99,27 @@ public class SlotManager : MonoBehaviour
         return m_obj_num_list[(int)slot_elem];
     }
 
+    void SetPlantSlot(int slot_num,Slot new_slot)
+    {
+        if(m_obj_num_list[(int)SlotElement.PLANT] < slot_num)
+        {
+            slot_num = m_obj_num_list[(int)SlotElement.PLANT];
+        }
+        // 新たなスロットとして書き加える
+        m_planet_slot_list[slot_num] = new_slot;
+    }
+
+    void SetArchSlotParam(int slot_num, Slot new_slot)
+    {
+        if (m_obj_num_list[(int)SlotElement.ARCH] < slot_num)
+        {
+            slot_num = m_obj_num_list[(int)SlotElement.ARCH];
+        }
+
+        m_arch_slot_list[slot_num] = new_slot;
+    }
+
+    // 当たり判定を取って属性半円ごとに生成する
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //m_planet_slot_list[0].p_obj.tag = collision.tag;
@@ -313,6 +334,10 @@ public class SlotManager : MonoBehaviour
         // オブジェクト取得
         GameObject get_obj;
 
+        float obj_angle = 0.0f;
+
+        const float ANGLE = 15.0f;
+
         // 最大スロット数分
         for (int i = 0; i < MAX_OBJECT_SLOT_NUM; i++)
         {
@@ -323,8 +348,11 @@ public class SlotManager : MonoBehaviour
 
             transform.RotateAround(pos, axis, angle);
 
+            // 惑星回転
+            UtillityMethod.PlanetRotate(this.gameObject, ANGLE);
 
-            UtillityMethod.PlanetRotate(this.gameObject, 15);
+            // アングル加算
+            obj_angle += ANGLE;
 
             // 入っていないならもう一度
             if (m_planet_slot_list[i].p_obj == null)
@@ -332,10 +360,13 @@ public class SlotManager : MonoBehaviour
                 continue;
             }
 
+            Quaternion rot = Quaternion.identity;
+
+            rot.eulerAngles = new Vector3(0.0f, 0.0f, obj_angle);
 
             // 生成
             get_obj = Instantiate(m_planet_slot_list[i].p_obj,
-                transform.position, Quaternion.identity);
+                transform.position, rot);
 
             // 全体配列に代入
             //m_planet_slot_list[i].p_obj = get_obj;
