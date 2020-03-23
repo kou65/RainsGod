@@ -45,6 +45,7 @@ public class MochaControl : MonoBehaviour
     SpriteRenderer MyMochaSpriteRenderer;
 
     GameObject my_object; // 自分自身の情報を入れる為の変数
+    Animator my_animator;
 
     GameObject mocha_manager_object;
     MochasManager mocha_manager;
@@ -67,6 +68,7 @@ public class MochaControl : MonoBehaviour
 
         // 自分自身の情報で初期化
         this.my_object = GameObject.Find(this.transform.name);
+        my_animator = GetComponent<Animator>();
 
         // このモチャをMochasManagerのMochaListの一番最後に追加する
         mocha_manager.AddMochaList(this.my_object);
@@ -133,6 +135,17 @@ public class MochaControl : MonoBehaviour
         }
     }
 
+    // アニメーションの処理
+    public void MoveMotion(float mocha_move_num_)
+    {
+        my_animator.SetFloat("WalkMoveNum", mocha_move_num_);
+
+        if (mocha_move_num_ == 0)
+        {
+            my_animator.StopPlayback();
+        }
+    }
+
     // 休憩の準備
     private void StartBreak()
     {
@@ -146,6 +159,17 @@ public class MochaControl : MonoBehaviour
         mocha_behavior_info.MoveDirection = Random.Range(-1, 2);
         mocha_behavior_info.MoveMaxTime = Random.Range(1.0f, 5.0f);
         mocha_behavior_info.MoveNowTime = 0.0f;
+
+        if(mocha_behavior_info.MoveDirection != 0)
+        {
+            my_animator.SetBool("IsWalkMove", true);
+        }
+        else
+        {
+            my_animator.SetBool("IsWalkMove", false);
+        }
+
+        MoveMotion(mocha_behavior_info.MoveDirection);
     }
 
     // 休憩の挙動
@@ -157,12 +181,13 @@ public class MochaControl : MonoBehaviour
             StartBreak();
         }
 
-        float MoveDirection = mocha_behavior_info.MoveDirection / 10.0f;
+        float MoveDirection = mocha_behavior_info.MoveDirection / 20.0f;
         UtillityMethod.PlanetRotate(this.gameObject, MoveDirection);
 
         mocha_behavior_info.StateNowTime += Time.deltaTime;
         if (mocha_behavior_info.StateNowTime >= mocha_behavior_info.StateMaxTime)
         {
+            //this.mocha_parameter.m_State = MochaState.BREAK;
             this.mocha_parameter.m_State = mocha_manager.MochaNextState(this.my_object);
         }
     }
